@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Marketplace | Home</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="shortcut icon" href="{{ asset('assets/img/icons/icon.ico') }}">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <style>
+        .gambar {
+            width: auto;
+            /* You can set the dimensions to whatever you want */
+            height: 790px;
+            object-fit: cover;
+        }
+
+    </style>
+    {{-- <script src="assets/css/splide.min.css"></script> --}}
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    @livewireStyles
+
+
+</head>
+
+
+<body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+
+        @include('home_partials.navbar')
+        <section class="py-11 bg-light-gradient border-bottom border-white border-5">
+            <div class="bg-holder overlay overlay-light"
+                style="background-image:url(assets/img/gallery/header-bg.png);background-size:cover;">
+            </div>
+            <!--/.bg-holder-->
+
+            <div class="container">
+                <div class="row flex-center">
+                    <div class="col-12 mb-10">
+                        <div class="d-flex align-items-center flex-column">
+                            <h1 class="fw-normal"> Sistem toko online</h1>
+                            <h1 class="fs-4 fs-lg-8 fs-md-6 fw-bold text-center">Menjual barang barang Eksklusif karya
+                                Siswa</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section class="py-0" id="header" style="margin-top: -23rem !important;">
+
+            <div class="container">
+                <div class="row g-0">
+                    <div class=" col-xl-6">
+                        <div class="card card-span h-100 text-white"> <img class="img-fluid gambar"
+                                src="assets/img/gallery/tas-sack.jpg" width="790" height="800" alt="..." />
+                        </div>
+                    </div>
+                    <div class=" col-xl-6">
+                        <div class="card card-span h-100 text-white"> <img class="img-fluid gambar"
+                                src="assets/img/gallery/food.jpg" width="790" height="800" alt="..." />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of .container-->
+
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+
+
+
+
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section class="py-0">
+
+            <h1 class="text-center my-5 fs-4">Produk Terbaru</h1>
+            <div class="container d-flex justify-content-center">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper text-center">
+                        @include('home_partials.latest_product')
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="" class="btn btn-lg btn-dark text-center">Tampilkan Semua</a>
+            </div>
+
+
+            <!-- end of .container-->
+
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+
+
+
+
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section>
+
+            <div class="container">
+                <div class="row h-100 g-0">
+                    <div class="col-md-6">
+                        <div class="bg-300 p-4 h-100 d-flex flex-column justify-content-center">
+                            <h4 class="text-800">Exclusive collection 2021</h4>
+                            <h1 class="fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">Be exclusive</h1>
+                            <p class="mb-5 fs-1">The best everyday option in a Super Saver range within a
+                                reasonable price. It is our responsibility to keep you 100 percent stylish. Be smart
+                                &amp; , trendy with us.</p>
+                            <div class="d-grid gap-2 d-md-block"><a class="btn btn-lg btn-dark" href="#"
+                                    role="button">Explore</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card card-span h-100 text-white"><img class="card-img h-100"
+                                src="assets/img/gallery/siswa.jpg" alt="..." />
+                            <div class="card-img-overlay bg-dark-gradient">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row h-100 g-2 py-1">
+                    <div class="col-md-4">
+                        <div class="card card-span h-100 text-white"><img class="card-img h-100"
+                                src="assets/img/gallery/vanity-bag.png" alt="..." />
+                            <div class="card-img-overlay bg-dark-gradient">
+                                <div class="d-flex align-items-end justify-content-center h-100"><a
+                                        class="btn btn-lg text-light fs-1" href="#!" role="button">Vanity Bags
+                                        <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg"
+                                            width="23" height="23" fill="currentColor" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                                            </path>
+                                        </svg></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-span h-100 text-white"><img class="card-img h-100"
+                                src="assets/img/gallery/hat.png" alt="..." />
+                            <div class="card-img-overlay bg-dark-gradient">
+                                <div class="d-flex align-items-end justify-content-center h-100"><a
+                                        class="btn btn-lg text-light fs-1" href="#!" role="button">Hats
+                                        <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg"
+                                            width="23" height="23" fill="currentColor" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                                            </path>
+                                        </svg></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-span h-100 text-white"><img class="card-img h-100"
+                                src="assets/img/gallery/high-heels.png" alt="..." />
+                            <div class="card-img-overlay bg-dark-gradient">
+                                <div class="d-flex align-items-end justify-content-center h-100"><a
+                                        class="btn btn-lg text-light fs-1" href="#!" role="button">High Heels
+                                        <svg class="bi bi-arrow-right-short" xmlns="http://www.w3.org/2000/svg"
+                                            width="23" height="23" fill="currentColor" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z">
+                                            </path>
+                                        </svg></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of .container-->
+
+        </section>
+        <section class="py-0" id="collection">
+
+            <div class="container">
+                <div class="row h-100 gx-2">
+                    <div class="col-md-6">
+                        <div class="card card-span h-100 text-white"><img class="card-img h-100"
+                                src="assets/img/gallery/urban.png" alt="..." />
+                            <div class="card-img-overlay bg-dark-gradient">
+                                <div class="p-5 p-md-2 p-xl-5">
+                                    <h1 class="fs-md-4 fs-lg-7 text-light">Urban Stories </h1>
+                                    <h5 class="fs-2 text-light">collection</h5>
+                                </div>
+                            </div><a class="stretched-link" href="#!"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card card-span h-100 text-white"><img class="card-img h-100"
+                                src="assets/img/gallery/country.png" alt="..." />
+                            <div class="card-img-overlay bg-dark-gradient">
+                                <div
+                                    class="p-5 p-md-2 p-xl-5 d-flex flex-column flex-end-center align-items-baseline h-100">
+                                    <h1 class="fs-md-4 fs-lg-7 text-light">Urban Stories </h1>
+                                    <h5 class="fs-2 text-light">collection</h5>
+                                </div>
+                            </div><a class="stretched-link" href="#!"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of .container-->
+
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+
+
+        {{-- @include('home_partials.best_seler') --}}
+        <div class="container">
+            <livewire:products-data>
+        </div>
+
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/feather-icons/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    <script src="assets/js/theme.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+
+
+    <script>
+        feather.replace()
+        // var swiper = new Swiper(".mySwiper", {
+        //   slidesPerView: 2,
+        //   spaceBetween: 60,
+        //   slidesPerGroup: 2,
+        //   loop: true,
+        //   loopFillGroupWithBlank: true,
+        //   pagination: {
+        //     el: ".swiper-pagination",
+        //     clickable: true,
+        //   },
+        //   navigation: {
+        //     nextEl: ".swiper-button-next",
+        //     prevEl: ".swiper-button-prev",
+        //   },
+        // });
+        var swiper = new Swiper('.mySwiper', {
+            // Default parameters
+            slidesPerView: 1,
+            spaceBetween: 10,
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10
+                },
+
+
+                // when window width is >= 640px
+                1000: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            loop: true
+        })
+    </script>
+    @livewireScripts
+    <script type="text/javascript">
+        document.getElementById('btn-load').onclick = function() {
+            window.livewire.emit('product-data');
+        };
+    </script>
+</body>
+
+</html>
