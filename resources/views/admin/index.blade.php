@@ -3,7 +3,7 @@
     <h2>Data Kategori</h2>
     <div class="card">
         <div class="card-header">
-            <a href="" class="btn btn-primary">Tambah Data</a>
+            <a href="/admin-dashboard/add-category" class="btn btn-primary">Tambah Data</a>
         </div>
         {{-- Alert --}}
         @if (session('success'))

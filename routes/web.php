@@ -107,6 +107,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'index']);
     // CRUD CATEGORY
     Route::get('/admin-dashboard/add-category',[CategoryController::class,'add']);
+    Route::post('/admin-dashboard/store-category',[CategoryController::class,'store']);
+    Route::delete('/admin-dashboard/delete-category/{category}',[CategoryController::class,'destroy']);
 
 });
 
