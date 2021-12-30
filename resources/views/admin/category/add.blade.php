@@ -18,7 +18,7 @@
                                     <label for="first-name-icon">Nama Kategori</label>
                                     <div class="position-relative">
                                         <input type="text" class="form-control"
-                                            placeholder="Nama Kategori" id="first-name-icon" name="name">
+                                            placeholder="Nama Kategori" id="first-name-icon" name="name" required>
                                         <div class="form-control-icon">
                                             <i class="bi bi-tags"></i>
                                         </div>
@@ -30,7 +30,7 @@
                                     <label for="email-id-icon">Foto</label>
                                     <div class="position-relative">
                                         <input type="file" class="form-control" placeholder="Foto"
-                                            id="email-id-icon" name="url_photo">
+                                            id="email-id-icon" name="url_photo" required>
                                         <div class="form-control-icon">
                                             <i class="bi bi-images"></i>
                                         </div>
