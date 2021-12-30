@@ -55,7 +55,8 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li>
                     <form class="d-flex" method="GET" action="/search/product">
-                        <input class="form-control ms-0 ms-md-4 me-2" type="search" placeholder="Cari Barang" name="name">
+                        <input class="form-control ms-0 ms-md-4 me-2" type="search" placeholder="Cari Barang"
+                            name="name">
                         <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
                 </li>
@@ -80,6 +81,9 @@
                                 Back
                                 {{ auth()->user()->name }}</a></span>
                         <ul class="dropdown-menu">
+                            @if (auth()->user()->is_admin)
+                                <li><a class="dropdown-item" href="/myaccount">Admin Area</a></li>
+                            @endif
                             <li><a class="dropdown-item" href="/myaccount">Profile</a></li>
                             <button class="dropdown-item">Logout</button>
                         </ul>
