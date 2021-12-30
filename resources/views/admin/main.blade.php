@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/assets/vendors/simple-datatables/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/assets/css/app.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="{{ asset('assets/css/lightbox.min.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="https://unpkg.com/feather-icons"></script>

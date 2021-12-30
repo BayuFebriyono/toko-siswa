@@ -105,6 +105,9 @@ Route::middleware('auth')->group(function () {
 
     // Route Admin
     Route::get('/admin-dashboard', [AdminController::class, 'index']);
+    // CRUD CATEGORY
+    Route::get('/admin-dashboard/add-category',[CategoryController::class,'add']);
+
 });
 
 //Route ubah foto profile

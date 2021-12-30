@@ -29,4 +29,9 @@ class CategoryController extends Controller
             'selected' => $table
         ]);
     }
+
+    // Crud
+    public function add(){
+        return view('admin.category.add');
+    }
 }
