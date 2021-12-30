@@ -82,7 +82,7 @@
                                 {{ auth()->user()->name }}</a></span>
                         <ul class="dropdown-menu">
                             @if (auth()->user()->is_admin)
-                                <li><a class="dropdown-item" href="/myaccount">Admin Area</a></li>
+                                <li><a class="dropdown-item" href="/admin-dashboard">Admin Area</a></li>
                             @endif
                             <li><a class="dropdown-item" href="/myaccount">Profile</a></li>
                             <button class="dropdown-item">Logout</button>

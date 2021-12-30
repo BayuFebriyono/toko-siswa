@@ -101,6 +101,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/mydashboard-konfirmasi/{order}/{status}', [MarketDashboardController::class, 'acc']);
     Route::get('/mydashboard-kirm', [MarketDashboardController::class, 'pengiriman']);
     Route::post('/mydashboard-kirm/{order}', [MarketDashboardController::class, 'kirim']);
+
+    // Route Admin
+    Route::get('/admin-dashboard', function () {
+        return view('admin.index');
+    });
 });
 
 //Route ubah foto profile
