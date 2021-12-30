@@ -15,6 +15,16 @@
                 )
             </script>
         @endif
+
+        @if (session('error'))
+            <script>
+                Swal.fire(
+                    'Gagal',
+                    '{{ session('error') }}',
+                    'error'
+                )
+            </script>
+        @endif
         {{-- End Alert --}}
         <div class="card-body">
             <table class="table table-striped" id="table1">
@@ -37,10 +47,11 @@
                             </td>
                             <td>
                                 <button class="p-0 py-2 px-4 btn btn-success mt-2" type="submit">Edit</button>
-                                <form action="/mydashboard-konfirmasi/{{ $category->id }}/CANCELED" class="d-inline"
+                                <form action="/admin-dashboard/delete-category/{{ $category->id }}" class="d-inline"
                                     method="POST">
                                     @csrf
-                                    <button class="p-0 px-3 py-2 mt-2 btn btn-danger" type="submit">Hapus</button>
+                                    @method('delete')
+                                    <button class="p-0 px-3 py-2 mt-2 btn btn-danger" type="submit" onclick="return confirm('Yakin ingin hapus?')">Hapus</button>
                                 </form>
                             </td>
 

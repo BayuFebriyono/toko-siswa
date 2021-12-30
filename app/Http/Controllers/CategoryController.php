@@ -57,7 +57,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category){
         $products = Product::where('category_id', $category->id)->get();
-        if ($products){
+        if ($products->count()){
             return redirect('/admin-dashboard')->with('error', 'Kategori tersebut sudah digunakan di produk');
         }
 
