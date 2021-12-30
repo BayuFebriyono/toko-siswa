@@ -37,7 +37,7 @@
                 <form class="login100-form validate-form" action="/auth" method="POST">
                     @csrf
                     <span class="login100-form-title p-b-43">
-                        Masuk Untuk Melanjutkan
+                        Masuk Sebagai Admin
                     </span>
 
                     @if (session('success'))
@@ -69,12 +69,8 @@
                         <span class="label-input100">Password</span>
                     </div>
 
-                    <p class="text-center my-3">Belum punya akun? <a href="/registrasi" class="text-info">Daftar
-                            dulu!</a></p>
-
-                    <p class="text-center my-3">Anda Admin?<a href="/login-admin" class="text-info">Login
-                            Disini</a>
-                    </p>
+                    <p class="text-center my-3">Bukan Admin? <a href="/login" class="text-info">Login
+                            Disini</a></p>
 
 
 

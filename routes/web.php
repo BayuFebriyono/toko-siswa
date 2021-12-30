@@ -56,6 +56,9 @@ Route::get('/market/show/{market:slug}', [MarketController::class, 'show']);
 //Route MiddleWare Guest
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::get('/login-admin', function () {
+        return view('login.login_admin');
+    });
 
     Route::get('/registrasi', [RegisterController::class, 'index']);
 });
@@ -124,7 +127,30 @@ Route::get('/pay', [PaymentController::class, 'index']);
 
 
 Route::get('/test', function () {
-    return view('market-dashboard.konfirmasi');
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.binderbyte.com/v1/track?api_key=bc95c7dde613326ce6032d86ccf328e8be2716997c1b21ee2651c7b27df2c45d&courier=jne&awb=8825112045716759",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET"
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err;
+    } else {
+        $response = json_decode($response);
+        $response = collect($response);
+        dd($response);
+    }
 });
 
 
