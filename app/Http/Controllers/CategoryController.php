@@ -47,7 +47,7 @@ class CategoryController extends Controller
             'name' => 'required|min:4|unique:categories',
             'url_photo' => 'mimes:png,jpg,jpeg|image|max:1024'
         ]);
-        
+
         $validatedData['slug'] = Str::slug($request->name, '-');
         $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $request->file('url_photo'));
 
@@ -55,14 +55,48 @@ class CategoryController extends Controller
         return redirect('/admin-dashboard')->with('success', 'Data Ditambahkan');
     }
 
-    public function destroy(Category $category){
+    public function destroy(Category $category)
+    {
         $products = Product::where('category_id', $category->id)->get();
-        if ($products->count()){
+        if ($products->count()) {
             return redirect('/admin-dashboard')->with('error', 'Kategori tersebut sudah digunakan di produk');
         }
 
+        $file_path = 'uploads/' . $category->url_photo;
+        unlink($file_path);
         Category::where('id', $category->id)->delete();
-        return redirect('/admin-dashboard')->with('success','Kategori dihapus');
-        
+        return redirect('/admin-dashboard')->with('success', 'Kategori dihapus');
+    }
+
+    public function edit(Category $category)
+    {
+        return view('admin.category.edit', [
+            'category' => $category
+        ]);
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        $data = Category::where('id', $category->id)->first();
+        $rules = [
+            'name' => 'required|min:4',
+        ];
+        if ($request->name == $data->id) {
+            $rules['name'] = 'required|min:4|unique:categories';
+        }
+
+        if ($request->file('url_photo')) {
+            $rules['url_photo'] = 'mimes:png,jpg,jpeg|image|max:1024';
+            $file_path = 'uploads/' . $category->url_photo;
+            unlink($file_path);
+        }
+        $validatedData = $request->validate($rules);
+
+        if($request->file('url_photo')){
+            $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $request->file('url_photo'));
+        }
+        $validatedData['slug'] = Str::slug($request->name, '-');
+        Category::where('id', $category->id)->update($validatedData);
+        return redirect('/admin-dashboard')->with('success', 'Data diperbarui');
     }
 }

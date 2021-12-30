@@ -16,7 +16,7 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item {{ Request::is('admin-dashboard*') ? 'active' : '' }} ">
-                    <a href="/mydashboard-konfirmasi" class='sidebar-link'>
+                    <a href="/admin-dashboard" class='sidebar-link'>
                         <i data-feather="package" class="text-dark"></i>
                         <span>Data Kategori</span>
                     </a>

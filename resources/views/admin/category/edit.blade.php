@@ -1,7 +1,7 @@
 @extends('admin.main')
 @section('content')
 
-    <h1 class="mb-5">Tambah Data</h1>
+    <h1 class="mb-5">Edit Data</h1>
 
     <div class="col-md-12 col-12">
         <div class="card">
@@ -19,9 +19,10 @@
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-vertical" method="POST" action="/admin-dashboard/store-category"
+                    <form class="form form-vertical" method="POST" action="/admin-dashboard/edit-category/{{ $category->id }}"
                         enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="form-body">
                             <div class="row">
                                 <div class="col-12">
@@ -30,7 +31,7 @@
                                         <div class="position-relative">
                                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                                 placeholder="Nama Kategori" id="first-name-icon" name="name"
-                                                value="{{ old('name') }}" required>
+                                                value="{{ old('name', $category->name) }}" required>
                                             <div class="form-control-icon">
                                                 <i class="bi bi-tags"></i>
                                             </div>
@@ -42,8 +43,7 @@
                                         <label for="email-id-icon">Foto</label>
                                         <div class="position-relative">
                                             <input type="file" class="form-control @error('url_photo') is-invalid @enderror"
-                                                placeholder="Foto dengan rasio 1:1" id="email-id-icon" name="url_photo"
-                                                value="{{ old('url_photo') }}" required>
+                                                placeholder="Foto dengan rasio 1:1" id="email-id-icon" name="url_photo">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-images"></i>
                                             </div>
