@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Models\Cart;
 use App\Models\City;
 use App\Models\User;
@@ -103,9 +104,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/mydashboard-kirm/{order}', [MarketDashboardController::class, 'kirim']);
 
     // Route Admin
-    Route::get('/admin-dashboard', function () {
-        return view('admin.index');
-    });
+    Route::get('/admin-dashboard', [AdminController::class, 'index']);
 });
 
 //Route ubah foto profile
