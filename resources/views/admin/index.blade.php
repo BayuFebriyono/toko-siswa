@@ -32,7 +32,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $category->name }}</td>
                             <td>
-                                <a href="" class="btn btn-info">Tampilkan Gambar</a>
+                                <a href="{{ asset('uploads/' . $category->url_photo) }}"
+                                    data-lightbox="image-{{ $loop->iteration }}" class="btn btn-info">Gambar</a>
                             </td>
                             <td>
                                 <button class="p-0 py-2 px-4 btn btn-success mt-2" type="submit">Edit</button>

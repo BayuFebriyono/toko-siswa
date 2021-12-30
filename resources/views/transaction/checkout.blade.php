@@ -98,7 +98,7 @@
             $("#kota").change(function() {
                 let id_kota = $(this).val();
                 let kota_asal = '{{ $cart->product->market->city_id }}';
-                let berat = '{{ $cart->product->berat }}';
+                let berat = '{{ $cart->product->berat * $cart->qty }}';
                 $("#progress").show();
                 $.ajax({
                     url: "/check-ongkir",
