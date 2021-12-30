@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('nik')->unique();
             $table->string('url_photo')->nullable();
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
         });
     }
