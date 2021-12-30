@@ -14,24 +14,24 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item {{ Request::is('mydashboard-konfirmasi*') ? 'active' : '' }} ">
+                <li class="sidebar-item {{ Request::is('admin-dashboard*') ? 'active' : '' }} ">
                     <a href="/mydashboard-konfirmasi" class='sidebar-link'>
-                        <i data-feather="check-circle" class="text-dark"></i>
-                        <span>Konfirmasi Pesanan</span>
+                        <i data-feather="package" class="text-dark"></i>
+                        <span>Data Kategori</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item {{ Request::is('mydashboard-kirm*') ? 'active' : '' }} ">
                     <a href="/mydashboard-kirm" class='sidebar-link'>
-                        <i data-feather="package" class="text-dark"></i>
-                        <span>Kirimkan Pesanan</span>
+                        <i data-feather="credit-card" class="text-dark"></i>
+                        <span>Lihat Pembayaran</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item ">
                     <a href="index.html" class='sidebar-link'>
-                        <i data-feather="smile" class="text-dark"></i>
-                        <span>Pesanan Terkirim</span>
+                        <i data-feather="user" class="text-dark"></i>
+                        <span>Data Admin</span>
                     </a>
                 </li>
 
