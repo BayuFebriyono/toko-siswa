@@ -72,9 +72,6 @@
                     <p class="text-center my-3">Belum punya akun? <a href="/registrasi" class="text-info">Daftar
                             dulu!</a></p>
 
-                    <p class="text-center my-3">Anda Admin?<a href="/login-admin" class="text-info">Login
-                            Disini</a>
-                    </p>
 
 
 

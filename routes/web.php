@@ -56,9 +56,6 @@ Route::get('/market/show/{market:slug}', [MarketController::class, 'show']);
 //Route MiddleWare Guest
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
-    Route::get('/login-admin', function () {
-        return view('login.login_admin');
-    });
 
     Route::get('/registrasi', [RegisterController::class, 'index']);
 });
