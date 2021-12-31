@@ -5,7 +5,7 @@
             <a class="nav-link " href="/mytransaction/not-yet-paid">Belum Bayar</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link bg-dark text-white">Proses</a>
+            <a class="nav-link bg-dark text-white" href="/mytransaction/proses">Proses</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Berhasil</a>
@@ -16,30 +16,24 @@
 
     <div class="row align-items-center mt-4">
         <h3>Paket No 020120026354621</h3>
-        <p>Status : DELIVERED</p>
+        <p>Status : {{ $summary->status }}</p>
     </div>
+    <a href="" class="btn btn-success">Pesanan Diterima</a>
     <hr class="hr my-4">
     <div>
         <p class="fs-2">History Paket</p>
         <div class="container">
-            <div class="row my-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">2021-03-25 16:30:00</h5>
-                        <p class="card-text">DELIVERED TO [TONO AKB SPEEDBOAT LONG TUNGU | 25-03-2021 16:30 | TARAKAN ]
-                        </p>
+            @foreach ($history as $hs)
+                <div class="row my-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $hs->date }}</h5>
+                            <p class="card-text">{{ $hs->desc }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row my-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">2021-03-25 16:07:00</h5>
-                        <p class="card-text">WITH DELIVERY COURIER [TARAKAN]</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Storage;
 
 class MyTransactionController extends Controller
@@ -43,5 +44,48 @@ class MyTransactionController extends Controller
         ]);
 
         return redirect('/mytransaction/not-yet-paid')->with('success', 'Tunggu Penjual Mengkonfirmasi Pesananmu');
+    }
+
+    // Cek Resi
+
+    public function cekResi($resi){
+        $api_key = env('BINDERBYTE_API_KEY');
+        $curl = curl_init();
+        $url = 'https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier=jne&awb='. $resi;
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET"
+        ));
+    
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        $data=null;
+        $summary = null;
+        $detail = null;
+        $history = null;
+    
+        curl_close($curl);
+    
+        if ($err) {
+           return redirect()->back()->with('error','Maaf Terjadi Kesa;ahan');
+        } else {
+            $response = json_decode($response);
+            $response = collect($response);
+            $data = $response['data'];
+            $summary = $data->summary;
+            $detail = $data->detail;
+            $history = $data->history;
+        }
+       return view('myprofile.transaction.cek-resi',[
+           'summary' => $summary,
+           'detail' => $detail,
+           'history' => $history
+       ]);
     }
 }
