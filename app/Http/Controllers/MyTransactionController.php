@@ -46,9 +46,18 @@ class MyTransactionController extends Controller
         return redirect('/mytransaction/not-yet-paid')->with('success', 'Tunggu Penjual Mengkonfirmasi Pesananmu');
     }
 
+    public function updateTerima(Order $order){
+        Order::where('id',$order->id)->update([
+            'status' => 'SUCCESS'
+        ]);
+
+        return redirect('/mytransaction/proses')->with('success','Konfirmasi pesanan diterima berhasil');
+
+    }
+
     // Cek Resi
 
-    public function cekResi($resi){
+    public function cekResi($resi,Order $order){
         $api_key = env('BINDERBYTE_API_KEY');
         $curl = curl_init();
         $url = 'https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier=jne&awb='. $resi;
@@ -87,7 +96,8 @@ class MyTransactionController extends Controller
        return view('myprofile.transaction.cek-resi',[
            'summary' => $summary,
            'detail' => $detail,
-           'history' => $history
+           'history' => $history,
+           'order' => $order
        ]);
     }
 }

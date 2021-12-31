@@ -18,7 +18,7 @@
             <h3>Paket No 020120026354621</h3>
             <p>Status : {{ $summary->status }}</p>
         </div>
-        <a href="" class="btn btn-success">Pesanan Diterima</a>
+        <a href="/mytransaction/terima/{{ $order->id }}" class="btn btn-success">Pesanan Diterima</a>
         <hr class="hr my-4">
         <div>
             <p class="fs-2">History Paket</p>
