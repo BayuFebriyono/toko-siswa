@@ -163,6 +163,10 @@ Route::get('/test', function () {
     }
 });
 
+Route::get('/test2',function(){
+    return view('myprofile.transaction.cek-resi');
+});
+
 
 
 
