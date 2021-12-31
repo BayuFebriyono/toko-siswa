@@ -94,6 +94,7 @@ Route::middleware('auth')->group(function () {
     // Route Transaksi User
     Route::get('/mytransaction/not-yet-paid', [MyTransactionController::class, 'belumBayar']);
     Route::get('/mytransaction/proses', [MyTransactionController::class, 'proses']);
+    Route::get('/mytransaction/finish', [MyTransactionController::class, 'finish']);
     Route::get('/mytransaction/terima/{order}', [MyTransactionController::class, 'updateTerima']);
     Route::get('/mytransaction/cekResi/{resi}/{order}', [MyTransactionController::class, 'cekResi']);
     Route::get('/mytransaction/pay/{order}', [MyTransactionController::class, 'bayar']);

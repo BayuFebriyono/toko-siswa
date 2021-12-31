@@ -27,6 +27,14 @@ class MyTransactionController extends Controller
         ]);
     }
 
+    public function finish(){
+        $user = auth()->user();
+        $order = Order::where('user_id', $user->id)->where('status', ['SUCCESS', 'FINISH'])->latest()->get();
+        return view('myprofile.transaction.finsih', [
+            'orders' => $order
+        ]);
+    }
+
     public function bayar(Order $order)
     {
         if ($order->user_id != auth()->user()->id) {

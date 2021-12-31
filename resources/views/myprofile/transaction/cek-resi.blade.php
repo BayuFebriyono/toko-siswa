@@ -8,7 +8,7 @@
             <a class="nav-link bg-dark text-white" href="/mytransaction/proses">Proses</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Berhasil</a>
+            <a class="nav-link" href="/mytransaction/finish">Berhasil</a>
         </li>
     </ul>
 
