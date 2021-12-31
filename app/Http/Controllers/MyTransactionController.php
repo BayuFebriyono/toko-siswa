@@ -21,7 +21,7 @@ class MyTransactionController extends Controller
     public function proses()
     {
         $user = auth()->user();
-        $order = Order::where('user_id', $user->id)->whereNotIn('status', ['PENDING', 'SUCCESS'])->get();
+        $order = Order::where('user_id', $user->id)->whereNotIn('status', ['PENDING', 'SUCCESS'])->latest()->get();
         return view('myprofile.transaction.proses', [
             'orders' => $order
         ]);
@@ -77,10 +77,12 @@ class MyTransactionController extends Controller
         } else {
             $response = json_decode($response);
             $response = collect($response);
-            $data = $response['data'];
-            $summary = $data->summary;
-            $detail = $data->detail;
-            $history = $data->history;
+            if(isset($response['data'])){
+                $data = $response['data'];
+                $summary = $data->summary;
+                $detail = $data->detail;
+                $history = $data->history;
+            }
         }
        return view('myprofile.transaction.cek-resi',[
            'summary' => $summary,

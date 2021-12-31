@@ -13,30 +13,48 @@
     </ul>
 
     {{-- Bagian Kontent --}}
-
-    <div class="row align-items-center mt-4">
-        <h3>Paket No 020120026354621</h3>
-        <p>Status : {{ $summary->status }}</p>
-    </div>
-    <a href="" class="btn btn-success">Pesanan Diterima</a>
-    <hr class="hr my-4">
-    <div>
-        <p class="fs-2">History Paket</p>
-        <div class="container">
-            @foreach ($history as $hs)
-                <div class="row my-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $hs->date }}</h5>
-                            <p class="card-text">{{ $hs->desc }}
-                            </p>
+    @if ($summary)
+        <div class="row align-items-center mt-4">
+            <h3>Paket No 020120026354621</h3>
+            <p>Status : {{ $summary->status }}</p>
+        </div>
+        <a href="" class="btn btn-success">Pesanan Diterima</a>
+        <hr class="hr my-4">
+        <div>
+            <p class="fs-2">History Paket</p>
+            <div class="container">
+                @if ($history)
+                    @foreach ($history as $hs)
+                        <div class="row my-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $hs->date }}</h5>
+                                    <p class="card-text">{{ $hs->desc }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="row my-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Error</h5>
+                                <p class="card-text">History Paket TIdak Ditemukan
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endif
 
-    </div>
+            </div>
+
+        </div>
+    @else
+        <h3 class="mt-4">Kode Resi Tidak Ditemukan</h3>
+    @endif
+
+
 
 
 
