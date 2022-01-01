@@ -25,12 +25,10 @@
                 <thead>
                     <tr>
                         <th>Kode Transaksi</th>
+                        <th>Rekening Toko</th>
                         <th>Product</th>
                         <th>Pembeli</th>
-                        <th>Alamat</th>
-                        <th>Telepon</th>
-                        <th>Kurir</th>
-                        <th>Qty</th>
+
                         <th>Total</th>
                         <th>Aksi</th>
                     </tr>
@@ -39,12 +37,10 @@
                     @foreach ($orders as $order)
                         <tr>
                             <td>{{ $order->kode }}</td>
+                            <td>{{ $order->orderDetail[0]->product->market->no_rekening }}</td>
                             <td>{{ $order->orderDetail[0]->product->name }}</td>
                             <td>{{ $order->user->username }}</td>
-                            <td>{{ $order->alamat }}</td>
-                            <td>{{ $order->nomor_hp }}</td>
-                            <td>{{ $order->kurir_name }}</td>
-                            <td>{{ $order->qty }}</td>
+
                             <td>Rp. {{ number_format($order->total, 0, ',', '.') }}</td>
                             <td>
                                 <form action="/admin-konfirmasi/{{ $order->id }}/FINISH" class="d-inline"
