@@ -50,7 +50,7 @@
                     <div class="row">
                     </div>
                     <p class="fs-1 mt-3">{{ $order->orderDetail[0]->product->name }}</p>
-                    @if ($order->status == 'PAYED')
+                    @if ($order->status == 'PAYED' || $order->status == 'RECEIVED')
                         <p class="fs-md-1 mt-0">Menunggu Konfirmasi Penjual</p>
                     @elseif ($order->status == 'CONFIRMED')
                         <p class="fs-md-1 mt-0">Pesanan Sedang Dikemas</p>

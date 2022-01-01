@@ -21,7 +21,7 @@ class MyTransactionController extends Controller
     public function proses()
     {
         $user = auth()->user();
-        $order = Order::where('user_id', $user->id)->whereNotIn('status', ['PENDING', 'SUCCESS'])->latest()->get();
+        $order = Order::where('user_id', $user->id)->whereNotIn('status', ['PENDING', 'SUCCESS','REJECTED'])->latest()->get();
         return view('myprofile.transaction.proses', [
             'orders' => $order
         ]);

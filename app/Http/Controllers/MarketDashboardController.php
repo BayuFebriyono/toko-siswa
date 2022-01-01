@@ -13,7 +13,7 @@ class MarketDashboardController extends Controller
         $user = auth()->user();
 
 
-        $orders = Order::with('user', 'market', 'orderDetail')->where('market_id', $user->market->id)->where('status', 'PAYED')->get();
+        $orders = Order::with('user', 'market', 'orderDetail')->where('market_id', $user->market->id)->where('status', 'RECEIVED')->get();
         return view('market-dashboard.konfirmasi', [
             'orders' => $orders
         ]);
