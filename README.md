@@ -7,9 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## List Fitur
+## List Todo Fitur
 <ul>
-    <li>Cek Resi</li>
+    <li><s>Cek Resi</s></li>
+     <li><s>Admin Cek Pembayaran</s></li>
+     <li><s>Dashboard Transaksi User Lengkap</s></li>
+     <li>Crop Gambar Categories</li>
+     <li>User Comment</li>
+     <li>Stock</li>
+     <li>Dashboard Admin Pesanan User Berhasil</li>
+    <li>Cek Ongkir All Ekspedisi</li>
 </ul>
 
 
