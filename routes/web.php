@@ -118,6 +118,7 @@ Route::middleware('auth')->group(function () {
 
         // Konfirmasi Pembayaran
         Route::get('/admin-konfirmasi',[AdminController::class,'pembayaran']);
+        Route::post('/admin-konfirmasi/{order}/{status}', [AdminController::class, 'acc']);
     });
 
 });
