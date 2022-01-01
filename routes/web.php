@@ -115,6 +115,9 @@ Route::middleware('auth')->group(function () {
         Route::delete('/admin-dashboard/delete-category/{category}',[CategoryController::class,'destroy']);
         Route::get('/admin-dashboard/edit-category/{category}',[CategoryController::class,'edit']);
         Route::put('/admin-dashboard/edit-category/{category}',[CategoryController::class,'update']);
+
+        // Konfirmasi Pembayaran
+        Route::get('/admin-konfirmasi',[AdminController::class,'pembayaran']);
     });
 
 });

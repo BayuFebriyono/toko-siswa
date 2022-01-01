@@ -22,6 +22,16 @@
         </script>
     @endif
 
+    @if (session('error'))
+    <script>
+        Swal.fire(
+            'Gagal',
+            "{{ session('error') }}",
+            'error'
+        )
+    </script>
+@endif
+
 
     {{-- Bagian Kontent --}}
     @if ($orders->count())

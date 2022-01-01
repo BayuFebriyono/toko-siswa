@@ -22,8 +22,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Request::is('mydashboard-kirm*') ? 'active' : '' }} ">
-                    <a href="/mydashboard-kirm" class='sidebar-link'>
+                <li class="sidebar-item {{ Request::is('admin-konfirmasi*') ? 'active' : '' }} ">
+                    <a href="/admin-konfirmasi" class='sidebar-link'>
                         <i data-feather="credit-card" class="text-dark"></i>
                         <span>Lihat Pembayaran</span>
                     </a>

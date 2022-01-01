@@ -90,7 +90,7 @@ class MyTransactionController extends Controller
         curl_close($curl);
     
         if ($err) {
-           return redirect()->back()->with('error','Maaf Terjadi Kesa;ahan');
+           return redirect()->back()->with('error','Maaf Terjadi Kesalahan Periksa Koneksi anda');
         } else {
             $response = json_decode($response);
             $response = collect($response);
