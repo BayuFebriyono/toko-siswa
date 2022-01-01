@@ -21,13 +21,23 @@ class MyTransactionController extends Controller
     public function proses()
     {
         $user = auth()->user();
-        $order = Order::where('user_id', $user->id)->whereNotIn('status', ['PENDING', 'SUCCESS','REJECTED'])->latest()->get();
+        $order = Order::where('user_id', $user->id)->whereNotIn('status', ['PENDING', 'SUCCESS', 'REJECTED'])->latest()->get();
         return view('myprofile.transaction.proses', [
             'orders' => $order
         ]);
     }
 
-    public function finish(){
+    public function gagal()
+    {
+        $user = auth()->user();
+        $order = Order::where('user_id', $user->id)->whereIn('status', ['REJECTED', 'CANCELED'])->latest()->get();
+        return view('myprofile.transaction.gagal', [
+            'orders' => $order
+        ]);
+    }
+
+    public function finish()
+    {
         $user = auth()->user();
         $order = Order::where('user_id', $user->id)->where('status', ['SUCCESS', 'FINISH'])->latest()->get();
         return view('myprofile.transaction.finsih', [
@@ -54,21 +64,22 @@ class MyTransactionController extends Controller
         return redirect('/mytransaction/not-yet-paid')->with('success', 'Tunggu Penjual Mengkonfirmasi Pesananmu');
     }
 
-    public function updateTerima(Order $order){
-        Order::where('id',$order->id)->update([
+    public function updateTerima(Order $order)
+    {
+        Order::where('id', $order->id)->update([
             'status' => 'SUCCESS'
         ]);
 
-        return redirect('/mytransaction/proses')->with('success','Konfirmasi pesanan diterima berhasil');
-
+        return redirect('/mytransaction/proses')->with('success', 'Konfirmasi pesanan diterima berhasil');
     }
 
     // Cek Resi
 
-    public function cekResi($resi,Order $order){
+    public function cekResi($resi, Order $order)
+    {
         $api_key = env('BINDERBYTE_API_KEY');
         $curl = curl_init();
-        $url = 'https://api.binderbyte.com/v1/track?api_key='.$api_key.'&courier=jne&awb='. $resi;
+        $url = 'https://api.binderbyte.com/v1/track?api_key=' . $api_key . '&courier=jne&awb=' . $resi;
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
@@ -79,33 +90,33 @@ class MyTransactionController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET"
         ));
-    
+
         $response = curl_exec($curl);
         $err = curl_error($curl);
-        $data=null;
+        $data = null;
         $summary = null;
         $detail = null;
         $history = null;
-    
+
         curl_close($curl);
-    
+
         if ($err) {
-           return redirect()->back()->with('error','Maaf Terjadi Kesalahan Periksa Koneksi anda');
+            return redirect()->back()->with('error', 'Maaf Terjadi Kesalahan Periksa Koneksi anda');
         } else {
             $response = json_decode($response);
             $response = collect($response);
-            if(isset($response['data'])){
+            if (isset($response['data'])) {
                 $data = $response['data'];
                 $summary = $data->summary;
                 $detail = $data->detail;
                 $history = $data->history;
             }
         }
-       return view('myprofile.transaction.cek-resi',[
-           'summary' => $summary,
-           'detail' => $detail,
-           'history' => $history,
-           'order' => $order
-       ]);
+        return view('myprofile.transaction.cek-resi', [
+            'summary' => $summary,
+            'detail' => $detail,
+            'history' => $history,
+            'order' => $order
+        ]);
     }
 }

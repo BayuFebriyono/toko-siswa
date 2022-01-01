@@ -10,6 +10,9 @@
         <li class="nav-item">
             <a class="nav-link" href="/mytransaction/finish">Berhasil</a>
         </li>
+        <li class="nav-item">
+            <a href="/mytransaction/gagal" class="nav-link">Gagal</a>
+        </li>
     </ul>
 
     @if (session('success'))
@@ -23,14 +26,14 @@
     @endif
 
     @if (session('error'))
-    <script>
-        Swal.fire(
-            'Gagal',
-            "{{ session('error') }}",
-            'error'
-        )
-    </script>
-@endif
+        <script>
+            Swal.fire(
+                'Gagal',
+                "{{ session('error') }}",
+                'error'
+            )
+        </script>
+    @endif
 
 
     {{-- Bagian Kontent --}}
@@ -57,7 +60,8 @@
                     @elseif ($order->status == 'SENDING')
                         <p class="fs-md-1 mt-0">Pesanan Dalam Proses</p>
                         <p class="fs-md-1 mt-0">No Resi : {{ $order->no_resi }}</p>
-                        <a href="/mytransaction/cekResi/{{ $order->no_resi }}/{{ $order->id }}" class="btn btn-success">Lacak Paket</a>
+                        <a href="/mytransaction/cekResi/{{ $order->no_resi }}/{{ $order->id }}"
+                            class="btn btn-success">Lacak Paket</a>
                     @endif
                 </div>
             </div>

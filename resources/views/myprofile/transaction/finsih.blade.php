@@ -10,6 +10,9 @@
         <li class="nav-item">
             <a class="nav-link bg-dark text-white" href="#">Berhasil</a>
         </li>
+        <li class="nav-item">
+            <a href="/mytransaction/gagal" class="nav-link">Gagal</a>
+        </li>
     </ul>
 
     @if (session('success'))
@@ -40,9 +43,9 @@
                     <div class="row">
                     </div>
                     <p class="fs-1 mt-3">{{ $order->orderDetail[0]->product->name }}</p>
-                        <p class="fs-md-1 mt-0">Pesanan Telah Selesai</p>
-                        <p class="fs-md-1 mt-0">No Resi : {{ $order->no_resi }}</p>
-                        {{-- <a href="/mytransaction/cekResi/{{ $order->no_resi }}/{{ $order->id }}" class="btn btn-success">Lacak Paket</a> --}}
+                    <p class="fs-md-1 mt-0">Pesanan Telah Selesai</p>
+                    <p class="fs-md-1 mt-0">No Resi : {{ $order->no_resi }}</p>
+                    {{-- <a href="/mytransaction/cekResi/{{ $order->no_resi }}/{{ $order->id }}" class="btn btn-success">Lacak Paket</a> --}}
                 </div>
             </div>
             <hr class="hr my-4">

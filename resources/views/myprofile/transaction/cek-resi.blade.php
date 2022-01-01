@@ -10,6 +10,9 @@
         <li class="nav-item">
             <a class="nav-link" href="/mytransaction/finish">Berhasil</a>
         </li>
+        <li class="nav-item">
+            <a href="/mytransaction/gagal" class="nav-link">Gagal</a>
+        </li>
     </ul>
 
     {{-- Bagian Kontent --}}
@@ -53,9 +56,4 @@
     @else
         <h3 class="mt-4">Kode Resi Tidak Ditemukan</h3>
     @endif
-
-
-
-
-
 @endsection

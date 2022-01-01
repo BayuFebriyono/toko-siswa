@@ -95,6 +95,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mytransaction/not-yet-paid', [MyTransactionController::class, 'belumBayar']);
     Route::get('/mytransaction/proses', [MyTransactionController::class, 'proses']);
     Route::get('/mytransaction/finish', [MyTransactionController::class, 'finish']);
+    Route::get('/mytransaction/gagal', [MyTransactionController::class, 'gagal']);
     Route::get('/mytransaction/terima/{order}', [MyTransactionController::class, 'updateTerima']);
     Route::get('/mytransaction/cekResi/{resi}/{order}', [MyTransactionController::class, 'cekResi']);
     Route::get('/mytransaction/pay/{order}', [MyTransactionController::class, 'bayar']);
@@ -110,17 +111,16 @@ Route::middleware('auth')->group(function () {
         // Route Admin
         Route::get('/admin-dashboard', [AdminController::class, 'index']);
         // CRUD CATEGORY
-        Route::get('/admin-dashboard/add-category',[CategoryController::class,'add']);
-        Route::post('/admin-dashboard/store-category',[CategoryController::class,'store']);
-        Route::delete('/admin-dashboard/delete-category/{category}',[CategoryController::class,'destroy']);
-        Route::get('/admin-dashboard/edit-category/{category}',[CategoryController::class,'edit']);
-        Route::put('/admin-dashboard/edit-category/{category}',[CategoryController::class,'update']);
+        Route::get('/admin-dashboard/add-category', [CategoryController::class, 'add']);
+        Route::post('/admin-dashboard/store-category', [CategoryController::class, 'store']);
+        Route::delete('/admin-dashboard/delete-category/{category}', [CategoryController::class, 'destroy']);
+        Route::get('/admin-dashboard/edit-category/{category}', [CategoryController::class, 'edit']);
+        Route::put('/admin-dashboard/edit-category/{category}', [CategoryController::class, 'update']);
 
         // Konfirmasi Pembayaran
-        Route::get('/admin-konfirmasi',[AdminController::class,'pembayaran']);
+        Route::get('/admin-konfirmasi', [AdminController::class, 'pembayaran']);
         Route::post('/admin-konfirmasi/{order}/{status}', [AdminController::class, 'acc']);
     });
-
 });
 
 //Route ubah foto profile
@@ -170,9 +170,8 @@ Route::get('/test', function () {
     }
 });
 
-Route::get('/test2',function(){
+Route::get('/test2', function () {
     return view('myprofile.transaction.cek-resi');
-    
 });
 
 
