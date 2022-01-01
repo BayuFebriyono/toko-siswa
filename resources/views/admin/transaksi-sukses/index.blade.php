@@ -47,7 +47,7 @@
                             <td>{{ $order->qty }}</td>
                             <td>Rp. {{ number_format($order->total, 0, ',', '.') }}</td>
                             <td>
-                                <form action="/admin-konfirmasi/{{ $order->id }}/RECEIVED" class="d-inline"
+                                <form action="/admin-konfirmasi/{{ $order->id }}/FINISH" class="d-inline"
                                     method="POST">
                                     @csrf
                                     <button class="p-0 p-2 btn btn-success mt-2" type="submit">Sudah Transfer</button>
