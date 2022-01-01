@@ -55,5 +55,6 @@
         </div>
     @else
         <h3 class="mt-4">Kode Resi Tidak Ditemukan</h3>
+        <a href="/mytransaction/terima/{{ $order->id }}" class="btn btn-success">Pesanan Diterima</a>
     @endif
 @endsection

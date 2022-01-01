@@ -5,7 +5,7 @@
             <a class="nav-link " href="/mytransaction/not-yet-paid">Belum Bayar</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link">Proses</a>
+            <a class="nav-link" href="/mytransaction/proses">Proses</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/mytransaction/finish">Berhasil</a>

@@ -15,9 +15,18 @@ class AdminController extends Controller
         ]);
     }
 
-    public function pembayaran(){
+    public function pembayaran()
+    {
         $orders = Order::with('user', 'market', 'orderDetail')->where('status', 'PAYED')->get();
         return view('admin.pembayaran.index', [
+            'orders' => $orders
+        ]);
+    }
+
+    public function success()
+    {
+        $orders = Order::with('user', 'market', 'orderDetail')->where('status', 'SUCCESS')->get();
+        return view('admin.transaksi-sukses.index', [
             'orders' => $orders
         ]);
     }

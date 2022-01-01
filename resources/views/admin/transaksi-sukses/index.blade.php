@@ -1,7 +1,7 @@
 @extends('admin.main')
 @section('content')
     <div class="page-heading">
-        <h3>Pembayaran Pembeli</h3>
+        <h3>Transaksi Berhasil</h3>
     </div>
 
 
@@ -50,12 +50,7 @@
                                 <form action="/admin-konfirmasi/{{ $order->id }}/RECEIVED" class="d-inline"
                                     method="POST">
                                     @csrf
-                                    <button class="p-0 p-2 btn btn-success mt-2" type="submit">Konfirmasi</button>
-                                </form>
-                                <form action="/admin-konfirmasi/{{ $order->id }}/REJECTED" class="d-inline"
-                                    method="POST">
-                                    @csrf
-                                    <button class="p-0 px-3 py-2 mt-2 btn btn-danger" type="submit">Batalkan</button>
+                                    <button class="p-0 p-2 btn btn-success mt-2" type="submit">Sudah Transfer</button>
                                 </form>
                             </td>
 

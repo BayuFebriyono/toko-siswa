@@ -29,10 +29,10 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item ">
-                    <a href="index.html" class='sidebar-link'>
-                        <i data-feather="user" class="text-dark"></i>
-                        <span>Data Admin</span>
+                <li class="sidebar-item {{ Request::is('admin-sukses*') ? 'active' : '' }} ">
+                    <a href="/admin-sukses" class='sidebar-link'>
+                        <i data-feather="check-circle" class="text-dark"></i>
+                        <span>Transaksi Berhasil</span>
                     </a>
                 </li>
 
