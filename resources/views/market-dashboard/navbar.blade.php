@@ -28,8 +28,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item ">
-                    <a href="index.html" class='sidebar-link'>
+                <li class="sidebar-item {{ Request::is('mytransaction/success*') ? 'active' : '' }}">
+                    <a href="/mytransaction/success" class='sidebar-link'>
                         <i data-feather="smile" class="text-dark"></i>
                         <span>Pesanan Terkirim</span>
                     </a>

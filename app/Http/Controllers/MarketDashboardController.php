@@ -31,6 +31,16 @@ class MarketDashboardController extends Controller
         ]);
     }
 
+    public function success()
+    {
+
+        $user = auth()->user();
+        $orders = Order::with('user', 'market', 'orderDetail')->where('market_id', $user->market->id)->where('status', 'FINISH')->get();
+        return view('market-dashboard.berhasil', [
+            'orders' => $orders
+        ]);
+    }
+
     public function acc(Order $order, $status)
     {
         $order->update([

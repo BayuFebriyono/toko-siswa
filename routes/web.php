@@ -103,6 +103,7 @@ Route::middleware('auth')->group(function () {
 
     // Route Market-Dashboard
     Route::get('/mydashboard-konfirmasi', [MarketDashboardController::class, 'konfirmasi']);
+    Route::get('/mytransaction/success', [MarketDashboardController::class, 'success']);
     Route::post('/mydashboard-konfirmasi/{order}/{status}', [MarketDashboardController::class, 'acc']);
     Route::get('/mydashboard-kirm', [MarketDashboardController::class, 'pengiriman']);
     Route::post('/mydashboard-kirm/{order}', [MarketDashboardController::class, 'kirim']);
