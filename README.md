@@ -13,7 +13,7 @@
      <li><s>Admin Cek Pembayaran</s></li>
      <li><s>Dashboard Transaksi User Lengkap</s></li>
      <li><s>Dashboard Market Pesanan User Berhasil</s></li>
-     <li>Crop Gambar Categories</li>
+     <li><s>Crop Gambar Categories</s></li>
      <li>Stock</li>
      <li>User Comment</li>
     <li>Cek Ongkir All Ekspedisi</li>
