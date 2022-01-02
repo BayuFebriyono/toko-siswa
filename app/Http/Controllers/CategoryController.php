@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CategoryController extends Controller
 {
@@ -49,7 +50,13 @@ class CategoryController extends Controller
         ]);
 
         $validatedData['slug'] = Str::slug($request->name, '-');
-        $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $request->file('url_photo'));
+        $image = $request->file('url_photo');
+        $filename = time().'.'.$request->url_photo->extension();
+        $image_resize = Image::make($image->getRealPath());
+        $image_resize->fit(250); 
+        // $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $image_resize);
+        $image_resize->save(public_path('uploads/category-image/'. $filename));
+        $validatedData['url_photo'] = 'category-image/'. $filename;
 
         Category::create($validatedData);
         return redirect('/admin-dashboard')->with('success', 'Data Ditambahkan');
