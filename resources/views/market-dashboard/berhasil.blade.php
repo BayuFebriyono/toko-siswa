@@ -32,7 +32,6 @@
                         <th>Kurir</th>
                         <th>Qty</th>
                         <th>Total</th>
-                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,19 +45,6 @@
                             <td>{{ $order->kurir_name }}</td>
                             <td>{{ $order->qty }}</td>
                             <td>Rp. {{ number_format($order->total, 0, ',', '.') }}</td>
-                            <td>
-                                <form action="/mydashboard-konfirmasi/{{ $order->id }}/CONFIRMED" class="d-inline"
-                                    method="POST">
-                                    @csrf
-                                    <button class="p-0 p-2 btn btn-success mt-2" type="submit">Konfirmasi</button>
-                                </form>
-                                <form action="/mydashboard-konfirmasi/{{ $order->id }}/CANCELED" class="d-inline"
-                                    method="POST">
-                                    @csrf
-                                    <button class="p-0 px-3 py-2 mt-2 btn btn-danger" type="submit">Batalkan</button>
-                                </form>
-                            </td>
-
                         </tr>
                     @endforeach
                 </tbody>
