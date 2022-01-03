@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('description');
+            $table->integer('stock');
             $table->integer('price');
             $table->float('berat');
             $table->foreignId('market_id');

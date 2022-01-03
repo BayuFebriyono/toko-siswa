@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use App\Models\Province;
 
 class OrderController extends Controller
@@ -40,6 +41,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // dd($request->kurir_name);
+
+       $product = Product::where('id',$request->product_id)->first();
+       Product::where('id',$request->product_id)->update([
+           'stock' => $product->stock - $request->qty
+       ]);
+
         $data = [
             'user_id' => auth()->user()->id,
             'market_id' => $request->market_id,

@@ -55,7 +55,7 @@
                             </div>
                             <div class="modal-footer d-flex justify-content-start">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success">Save</button>
+                                <button type="submit" class="btn btn-success"  onclick="return cekJumlah()">Save</button>
                             </div>
                         </form>
                     </div>
@@ -92,6 +92,7 @@
                 <h5 class="my-3">Rp. {{ number_format($product->price, 0, ',', '.') }}</h5>
                 <hr class="hr">
                 <p class="fs-1">Kategori : {{ $product->category->name }}</p>
+                <p class="fs-1">Stock : {{ $product->stock }}</p>
                 <p class="fs-1">{{ $product->description }}</p>
                 <form action="">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -123,10 +124,22 @@
         });
 
         function cekJumlah() {
+            const stock = {{ $product->stock }}
             const jumlah = document.getElementById('jumlah');
+
             if (jumlah.value < 1) {
                 jumlah.value = 1;
             }
+
+            if (jumlah.value > stock){
+                jumlah.value = stock;
+            }
+
+            if(stock == 0){
+                return false;
+            }
+
+            return true;
         }
     </script>
 

@@ -35,8 +35,8 @@
                         <form action="/cart/{{ $cart->id }}" class="d-inline" method="POST">
                             @csrf
                             @method('put')
-                            <input type="number" class="form-control mb-2" name="qty" value="{{ $cart->qty }}" required>
-                            <button type="submit" class=" p-0 py-2 px-3 btn btn-success mt-2">Beli</button>
+                            <input type="number"  onchange="cekJumlah({{ $cart->product->stock }})" class="form-control mb-2" name="qty" id="jumlah" value="{{ $cart->qty }}" required>
+                            <button type="submit" onclick="return cekJumlah({{ $cart->product->stock }})" class=" p-0 py-2 px-3 btn btn-success mt-2">Beli</button>
                         </form>
                         <form action="/cart/{{ $cart->id }}" class="d-inline" method="POST">
                             @csrf
@@ -57,5 +57,24 @@
 
 
     </div>
+    <script>
+        function cekJumlah(stock) {
+            const jumlah = document.getElementById('jumlah');
+
+            if (jumlah.value < 1) {
+                jumlah.value = 1;
+            }
+
+            if (jumlah.value > stock){
+                jumlah.value = stock;
+            }
+
+            if(stock == 0){
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 
 @endsection

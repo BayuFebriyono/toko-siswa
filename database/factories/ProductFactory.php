@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'slug'        => $this->faker->unique()->slug(),
             'berat' => mt_rand(1, 5),
             'description' => $this->faker->paragraph(),
+            'stock' => mt_rand(1,100),
             'price'       => $price[$key],
             'market_id'   => mt_rand(1, 5),
             'category_id' => mt_rand(1, 3)
