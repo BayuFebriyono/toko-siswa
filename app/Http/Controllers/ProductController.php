@@ -43,6 +43,7 @@ class ProductController extends Controller
             'name' => 'required|unique:products|min:5|max:20',
             'description' => 'required|min:20|max:500',
             'price' => 'required|min:4',
+            'stock' => 'required|min:1',
             'berat' => 'numeric'
         ]);
         $validatedData['category_id'] = $request->category_id;
@@ -99,7 +100,8 @@ class ProductController extends Controller
         $rules = [
             'name' => 'required|min:5|max:20',
             'description' => 'required|min:20|max:500',
-            'price' => 'required|min:4'
+            'price' => 'required|min:4',
+            'stock' => 'required'
         ];
 
         if ($request->name != $product->name) {

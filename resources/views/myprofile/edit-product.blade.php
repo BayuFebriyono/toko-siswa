@@ -62,6 +62,7 @@
                             <div class="modal-body">
                                 <input type="text" class="form-control mt-2" placeholder="Nama Produk" name="name"
                                     value="{{ $product->name }}" required>
+                                <input type="number" class="form-control mt-2" placeholder="Stok Barang" name="stock" value="{{ $product->stock }}" required>
                                 <input type="number" class="form-control mt-2" placeholder="Harga Produk" name="price"
                                     id="tbPrice" value="{{ $product->price }}" required onchange="cekHarga()">
                                 <label for="category" class="mt-2">Kategori</label>
@@ -151,6 +152,8 @@
                 </a>
                 <h5 class="my-3">Rp. {{ $product->price }}</h5>
                 <hr class="hr">
+                <p class="fs-1">Kategori : {{ $product->category->name }}</p>
+                <p class="fs-1">Stok : {{ $product->stock }}</p>
                 <p class="fs-1">{{ $product->description }}</p>
                 {{-- Icon Ubah Foto --}}
                 <form action="" class="d-inline p-6">

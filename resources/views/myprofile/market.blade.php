@@ -57,6 +57,7 @@
                         <input type="text" class="form-control mt-2" placeholder="Nama Produk" name="name" required>
                         <input type="number" class="form-control mt-2" placeholder="Harga Produk" name="price"
                             id="tbPrice" required onchange="cekHarga()">
+                        <input type="number" class="form-control mt-2" placeholder="Stock Barang" name="stock" required>
                         <input type="text" class="form-control mt-2" placeholder="Berat (Kg)" name="berat" required>
                         <label for="category" class="mt-2">Kategori</label>
                         <select name="category_id" class="form-select" id="category">
