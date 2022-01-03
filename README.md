@@ -14,7 +14,8 @@
      <li><s>Dashboard Transaksi User Lengkap</s></li>
      <li><s>Dashboard Market Pesanan User Berhasil</s></li>
      <li><s>Crop Gambar Categories</s></li>
-     <li>Stock</li>
+     <li><s>Stock</s></li>
+    <li>Fitur Search Diperbaiki Lagi</li>
      <li>User Comment</li>
     <li>Cek Ongkir All Ekspedisi</li>
 </ul>
