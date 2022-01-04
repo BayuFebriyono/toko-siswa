@@ -21,7 +21,7 @@
                     <p>Hasil Pencarian Ditemukan {{ $products->count() }} Produk</p>
                 </div>
                 <div class="col-md-6">
-                    <form action="/category-show/" method="GET">
+                    <form action="/category-show-filter/" method="GET">
 
                         @method('GET')
                         <input type="hidden" name="category_id" value="{{ $category->id }}">

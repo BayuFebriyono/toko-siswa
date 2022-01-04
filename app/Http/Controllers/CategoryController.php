@@ -21,7 +21,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function sortir($table = null, $category_id = null, Request $request)
+    public function sortir( Request $request)
     {
         $table = $request->sortir;
         // dd($table);

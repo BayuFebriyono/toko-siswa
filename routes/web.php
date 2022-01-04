@@ -138,7 +138,7 @@ Route::get('/all-products/search', function () {
 });
 
 Route::get('/category-show/{category:slug}', [CategoryController::class, 'show']);
-Route::get('/category-show/', [CategoryController::class, 'sortir']);
+Route::get('/category-show-filter/', [CategoryController::class, 'sortir']);
 
 // Route Cari Barang
 Route::get('/search/product', [HomeController::class, 'search']);
