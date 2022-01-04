@@ -24,7 +24,8 @@ class HomeController extends Controller
         return view('product.all_product', [
             'products' => $products,
             'category' => $category,
-            'selected' => 'price'
+            'selected' => 'price',
+            'search' => $request->name
         ]);
     }
 }

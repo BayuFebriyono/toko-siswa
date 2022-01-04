@@ -25,6 +25,9 @@
 
                         @method('GET')
                         <input type="hidden" name="category_id" value="{{ $category->id }}">
+                        @if (isset($search))
+                            <input type="hidden" name="search" value="{{ $search }}">
+                        @endif
                         <div class="row">
                             <div class="col-md-4 mt-2">
                                 <p>Urutkan Berdasarkan</p>

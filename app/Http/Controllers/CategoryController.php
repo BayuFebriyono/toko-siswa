@@ -21,13 +21,23 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function sortir( Request $request)
+    public function sortir(Request $request)
     {
         $table = $request->sortir;
-        // dd($table);
         $category_id = $request->category_id;
         $category = Category::where('id', $category_id)->first();
+        if ($request->search) {
+
+            $products = Product::where('name', 'like',  "\\" . $request->search . "%")->get()->sortBy($table);
+            return view('product.all_product', [
+                'products' => $products,
+                'category' => $category,
+                'selected' => $table,
+                'search' => $request->search
+            ]);
+        }
         $products = Product::where('category_id', $category_id)->get()->sortBy($table);
+        // dd($request->search);
         return view('product.all_product', [
             'products' => $products,
             'category' => $category,
@@ -51,12 +61,12 @@ class CategoryController extends Controller
 
         $validatedData['slug'] = Str::slug($request->name, '-');
         $image = $request->file('url_photo');
-        $filename = time().'.'.$request->url_photo->extension();
+        $filename = time() . '.' . $request->url_photo->extension();
         $image_resize = Image::make($image->getRealPath());
-        $image_resize->fit(250); 
+        $image_resize->fit(250);
         // $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $image_resize);
-        $image_resize->save(public_path('uploads/category-image/'. $filename));
-        $validatedData['url_photo'] = 'category-image/'. $filename;
+        $image_resize->save(public_path('uploads/category-image/' . $filename));
+        $validatedData['url_photo'] = 'category-image/' . $filename;
 
         Category::create($validatedData);
         return redirect('/admin-dashboard')->with('success', 'Data Ditambahkan');
@@ -99,14 +109,14 @@ class CategoryController extends Controller
         }
         $validatedData = $request->validate($rules);
 
-        if($request->file('url_photo')){
+        if ($request->file('url_photo')) {
             $image = $request->file('url_photo');
-        $filename = time().'.'.$request->url_photo->extension();
-        $image_resize = Image::make($image->getRealPath());
-        $image_resize->fit(250); 
-        // $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $image_resize);
-        $image_resize->save(public_path('uploads/category-image/'. $filename));
-        $validatedData['url_photo'] = 'category-image/'. $filename;
+            $filename = time() . '.' . $request->url_photo->extension();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->fit(250);
+            // $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $image_resize);
+            $image_resize->save(public_path('uploads/category-image/' . $filename));
+            $validatedData['url_photo'] = 'category-image/' . $filename;
         }
         $validatedData['slug'] = Str::slug($request->name, '-');
         Category::where('id', $category->id)->update($validatedData);
