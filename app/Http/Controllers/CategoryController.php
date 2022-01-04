@@ -100,7 +100,13 @@ class CategoryController extends Controller
         $validatedData = $request->validate($rules);
 
         if($request->file('url_photo')){
-            $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $request->file('url_photo'));
+            $image = $request->file('url_photo');
+        $filename = time().'.'.$request->url_photo->extension();
+        $image_resize = Image::make($image->getRealPath());
+        $image_resize->fit(250); 
+        // $validatedData['url_photo'] = Storage::disk('public_uploads')->put('category-image', $image_resize);
+        $image_resize->save(public_path('uploads/category-image/'. $filename));
+        $validatedData['url_photo'] = 'category-image/'. $filename;
         }
         $validatedData['slug'] = Str::slug($request->name, '-');
         Category::where('id', $category->id)->update($validatedData);
