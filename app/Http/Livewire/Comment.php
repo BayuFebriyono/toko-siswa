@@ -20,7 +20,7 @@ class Comment extends Component
     public function render()
     {
 
-        $comments = Komentar::with(['product', 'user'])->where('product_id', $this->product_id)->latest()->paginate(1);
+        $comments = Komentar::with(['product', 'user'])->where('product_id', $this->product_id)->latest()->paginate(5);
         return view('livewire.comment', [
             'comments' => $comments
         ]);
