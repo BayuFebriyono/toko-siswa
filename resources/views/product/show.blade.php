@@ -55,7 +55,7 @@
                             </div>
                             <div class="modal-footer d-flex justify-content-start">
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success"  onclick="return cekJumlah()">Save</button>
+                                <button type="submit" class="btn btn-success" onclick="return cekJumlah()">Save</button>
                             </div>
                         </form>
                     </div>
@@ -99,6 +99,36 @@
                         data-bs-target="#marketModal">Tambah Ke Keranjang</button>
                 </form>
             </div>
+
+            <hr class="mt-5">
+            <h3 class="mt-3">Komentar</h3>
+
+            <div class="row mt-3 align-items-center">
+                <div class="col-md-1">
+                    <img src="{{ asset('assets/img/gallery/author-1.png') }}" alt="Foto Profil"
+                        class="img-fluid rounded-circle">
+                </div>
+                <div class="col-md-11">
+                    <p class="fs-1">Nana ML</p>
+                </div>
+            </div>
+            <p class="mt-3">Wah Barang Ini Sangat Berguna Sekali Yah</p>
+            <hr class="mt-2">
+
+            <div class="row mt-3 align-items-center">
+                <div class="col-md-1">
+                    <img src="{{ asset('assets/img/gallery/author-1.png') }}" alt="Foto Profil"
+                        class="img-fluid rounded-circle">
+                </div>
+                <div class="col-md-11">
+                    <p class="fs-1">Nana ML</p>
+                </div>
+            </div>
+            <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio nemo quae dolor
+                rerum voluptatem molestiae aut! Corporis recusandae veniam labore nam quas asperiores voluptate eligendi
+                quia reiciendis repudiandae, delectus a illo fuga accusantium dolores officia possimus vero at dolorem iusto
+                hic perspiciatis. Porro architecto dolores nesciunt libero, incidunt temporibus error.</p>
+            <hr class="mt-2">
         </div>
         @livewireStyles
         <livewire:products-data>
@@ -131,11 +161,11 @@
                 jumlah.value = 1;
             }
 
-            if (jumlah.value > stock){
+            if (jumlah.value > stock) {
                 jumlah.value = stock;
             }
 
-            if(stock == 0){
+            if (stock == 0) {
                 return false;
             }
 
