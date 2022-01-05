@@ -19,6 +19,7 @@ use App\Http\Controllers\MarketController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MarketDashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MyTransactionController;
@@ -72,6 +73,10 @@ Route::middleware('auth')->group(function () {
         ]);
     });
     Route::get('/myaccount/market', [MarketController::class, 'myMarket']);
+
+
+    // Route CRUD Comments
+    Route::resource('/comments', CommentController::class);
 
     //Route CRUD cart
     Route::resource('/cart', CartController::class);
