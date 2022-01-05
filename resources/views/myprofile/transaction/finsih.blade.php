@@ -25,6 +25,30 @@
         </script>
     @endif
 
+    <!-- Modal -->
+    <div class="modal fade " id="commentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalHeader">Ubah</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <label for="comment">Komentar</label>
+                        <textarea id="comment" name="comment" class="form-control" rows="2" required></textarea>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-start">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal Box --}}
+
 
     {{-- Bagian Kontent --}}
     @if ($orders->count())
@@ -45,7 +69,7 @@
                     <p class="fs-1 mt-3">{{ $order->orderDetail[0]->product->name }}</p>
                     <p class="fs-md-1 mt-0">Pesanan Telah Selesai</p>
                     <p class="fs-md-1 mt-0">No Resi : {{ $order->no_resi }}</p>
-                    <a href="" class="btn btn-success">Comment</a>
+                    <a  class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#commentModal">Comment</a>
                 </div>
             </div>
             <hr class="hr my-4">

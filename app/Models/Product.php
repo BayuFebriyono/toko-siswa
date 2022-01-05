@@ -26,6 +26,11 @@ class Product extends Model
     {
         return $this->hasMany(Photo::class);
     }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
+
     public function orderDetail()
     {
         return $this->hasMany(OrderDetail::class);

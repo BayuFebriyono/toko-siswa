@@ -23,4 +23,8 @@ class Order extends Model
     public function orderDetail(){
         return $this->hasMany(OrderDetail::class);
     }
+
+    public function comment(){
+        return $this->hasOne(Comment::class);
+    }
 }
