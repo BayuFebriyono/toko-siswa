@@ -64,11 +64,11 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $photos = Photo::where('product_id', $product->id)->get();
-        $comments = Comment::with(['product', 'user'])->where('product_id', $product->id)->get();
+        // $comments = Comment::with(['product', 'user'])->where('product_id', $product->id)->get();
         return view('product.show', [
             'product' => $product,
             'photos'  => $photos,
-            'comments' => $comments
+            // 'comments' => $comments
         ]);
     }
 
