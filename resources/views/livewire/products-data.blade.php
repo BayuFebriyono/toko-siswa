@@ -19,7 +19,8 @@
                             </div>
                             <div class="card-body">
                                 <p> Toko : {{ $product->market->name }}</p>
-                                <p class="card-text ">{{ $product->name }}</p>
+                                <p class="card-text ">
+                                    {{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}</p>
                                 <p class="card-text fs-md-2">Rp.{{ number_format($product->price, 0, ',', '.') }}</p>
                             </div>
                         </div>
