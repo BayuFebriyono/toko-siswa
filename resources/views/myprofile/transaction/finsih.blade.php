@@ -45,7 +45,7 @@
                     <p class="fs-1 mt-3">{{ $order->orderDetail[0]->product->name }}</p>
                     <p class="fs-md-1 mt-0">Pesanan Telah Selesai</p>
                     <p class="fs-md-1 mt-0">No Resi : {{ $order->no_resi }}</p>
-                    {{-- <a href="/mytransaction/cekResi/{{ $order->no_resi }}/{{ $order->id }}" class="btn btn-success">Lacak Paket</a> --}}
+                    <a href="" class="btn btn-success">Comment</a>
                 </div>
             </div>
             <hr class="hr my-4">
