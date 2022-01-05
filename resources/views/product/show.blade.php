@@ -4,14 +4,15 @@
     @livewireStyles
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-7 col-lg-5">
                 @if ($photos->count())
                     <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
                         <div class="swiper-wrapper">
                             @foreach ($photos as $photo)
-                                <div class="swiper-slide">
-                                    <img src="{{ asset('uploads/' . $photo->url) }}" />
-                                </div>
+                                <div class="swiper-slide" >
+                                        <img src="{{ asset('uploads/' . $photo->url) }}" class="img-fluid" />
+                                    </div>
+                                
                             @endforeach
                         </div>
                         <div class="swiper-button-next"></div>
@@ -62,7 +63,7 @@
                 </div>
             </div>
             {{-- End Modal Box --}}
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-5 col-lg-5">
                 @if (session('success'))
                     <div class="alert alert-info alert-dismissible fade show" role="alert">
                         <strong>Sukses</strong> {{ session('success') }}
