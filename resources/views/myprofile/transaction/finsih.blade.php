@@ -33,9 +33,11 @@
                     <h5 class="modal-title" id="modalHeader">Ubah</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST">
+                <form action="/comments" method="POST">
                     @csrf
                     <div class="modal-body">
+                        <input type="hidden" id="product_id" name="product_id" value="">
+                        <input type="hidden" id="order_id" name="order_id" value="">
                         <label for="comment">Komentar</label>
                         <textarea id="comment" name="comment" class="form-control" rows="2" required></textarea>
                     </div>
@@ -69,7 +71,11 @@
                     <p class="fs-1 mt-3">{{ $order->orderDetail[0]->product->name }}</p>
                     <p class="fs-md-1 mt-0">Pesanan Telah Selesai</p>
                     <p class="fs-md-1 mt-0">No Resi : {{ $order->no_resi }}</p>
-                    <a  class="btn btn-success" data-bs-toggle="modal"  data-bs-target="#commentModal">Comment</a>
+                    @if (!$order->comment)
+                        <a class="btn btn-success"
+                            onclick="fillComment({{ $order->id }},{{ $order->orderDetail[0]->product->id }})"
+                            data-bs-toggle="modal" data-bs-target="#commentModal">Comment</a>
+                    @endif
                 </div>
             </div>
             <hr class="hr my-4">
@@ -80,6 +86,15 @@
         </div>
     @endif
 
+    <script>
+        function fillComment(order_id, product_id) {
+            const order = document.getElementById('order_id');
+            const product = document.getElementById('product_id');
 
+            order.value = order_id;
+            product.value = product_id;
+
+        }
+    </script>
 
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -34,7 +35,15 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'user_id' => auth()->user()->id,
+            'product_id' => $request->product_id,
+            'order_id' => $request->order_id,
+            'comment' => $request->comment
+        ];
+
+        Comment::create($data);
+        return redirect()->back()->with('success', 'Sukses Upload Komentar');
     }
 
     /**
