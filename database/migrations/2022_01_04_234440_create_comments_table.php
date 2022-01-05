@@ -18,7 +18,8 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('product_id');
             $table->foreignId('order_id');
-            $table->string('comment');
+            $table->text('comment');
+            $table->integer('star');
             $table->timestamps();
         });
     }

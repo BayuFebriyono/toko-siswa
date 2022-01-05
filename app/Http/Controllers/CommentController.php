@@ -39,7 +39,8 @@ class CommentController extends Controller
             'user_id' => auth()->user()->id,
             'product_id' => $request->product_id,
             'order_id' => $request->order_id,
-            'comment' => $request->comment
+            'comment' => $request->comment,
+            'star' => $request->rate
         ];
 
         Comment::create($data);

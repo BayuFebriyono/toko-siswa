@@ -1,3 +1,9 @@
+<style>
+    .checked {
+        color: orange;
+    }
+
+</style>
 <section>
 
     <div class="row h-100 d-flex justify-content-center">
@@ -21,6 +27,21 @@
                                 <p> Toko : {{ $product->market->name }}</p>
                                 <p class="card-text ">
                                     {{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}</p>
+                                @if ($product->comment->count())
+                                    <div class="">
+                                        <span
+                                            class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 1 || round($product->comment->sum('star') / $product->comment->count()) == 2 || round($product->comment->sum('star') / $product->comment->count()) == 3 || round($product->comment->sum('star') / $product->comment->count()) == 4 || round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
+                                        <span
+                                            class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 2 || round($product->comment->sum('star') / $product->comment->count()) == 3 || round($product->comment->sum('star') / $product->comment->count()) == 4 || round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
+                                        <span
+                                            class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 3 || round($product->comment->sum('star') / $product->comment->count()) == 4 || round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
+                                        <span
+                                            class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 4 || round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
+                                        <span class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
+                                    </div>
+                                @else
+                                    <p class="text-muted">Belum Ada Rating</p>
+                                @endif
                                 <p class="card-text fs-md-2">Rp.{{ number_format($product->price, 0, ',', '.') }}</p>
                             </div>
                         </div>

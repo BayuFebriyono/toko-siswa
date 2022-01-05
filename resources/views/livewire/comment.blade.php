@@ -1,3 +1,10 @@
+<style>
+    .checked {
+        color: orange;
+    }
+
+</style>
+
 <div>
     @if ($comments->count())
         @foreach ($comments as $comment)
@@ -15,6 +22,13 @@
                 <div class="col-md-11 col-9">
                     <p class="fs-md-1">{{ $comment->user->name }}</p>
                 </div>
+            </div>
+            <div class="mt-3">
+                <span class="fa fa-star {{ ($comment->star == 1 || $comment->star == 2 || $comment->star == 3 || $comment->star == 4 || $comment->star == 5) ? 'checked' : '' }}"></span>
+                <span class="fa fa-star {{ ($comment->star ==2 || $comment->star ==3 || $comment->star == 4 || $comment->star ==5) ? 'checked' : '' }}"></span>
+                <span class="fa fa-star {{ ($comment->star == 3|| $comment->star ==4 || $comment->star ==5) ? 'checked' : '' }}"></span>
+                <span class="fa fa-star {{ ($comment->star == 4 || $comment->star == 5) ? 'checked' : '' }}"></span>
+                <span class="fa fa-star {{ ($comment->star == 5) ? 'checked' : '' }}"></span>
             </div>
             <p class="mt-md-3 mt-5">{{ $comment->comment }}</p>
             <hr class="mt-2">
