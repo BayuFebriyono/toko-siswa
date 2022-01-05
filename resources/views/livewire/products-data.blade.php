@@ -1,11 +1,11 @@
-<style>
-    .checked {
-        color: orange;
-    }
 
-</style>
 <section>
-
+    <style>
+        .checked {
+            color: orange;
+        }
+    
+    </style>
     <div class="row h-100 d-flex justify-content-center">
         <h4 class="fs-3">Produk Terbaru</h4>
 

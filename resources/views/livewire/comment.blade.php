@@ -1,9 +1,4 @@
-<style>
-    .checked {
-        color: orange;
-    }
 
-</style>
 
 <div>
     @if ($comments->count())

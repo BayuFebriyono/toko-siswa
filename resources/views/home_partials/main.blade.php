@@ -28,7 +28,7 @@
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    @livewireStyles
+  
 
 
 </head>
@@ -83,7 +83,7 @@
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
-
+                @livewireStyles
                 <livewire:products-data>
         </section>
 
