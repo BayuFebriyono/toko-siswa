@@ -103,32 +103,26 @@
             <hr class="mt-5">
             <h3 class="mt-3">Komentar</h3>
 
-            <div class="row mt-3 align-items-center">
-                <div class="col-md-1">
-                    <img src="{{ asset('assets/img/gallery/author-1.png') }}" alt="Foto Profil"
-                        class="img-fluid rounded-circle">
-                </div>
-                <div class="col-md-11">
-                    <p class="fs-1">Nana ML</p>
-                </div>
-            </div>
-            <p class="mt-3">Wah Barang Ini Sangat Berguna Sekali Yah</p>
-            <hr class="mt-2">
+            @foreach ($comments as $comment)
+                <div class="row mt-3 align-items-center">
+                    <div class="col-md-1">
+                        @if ($comment->user->url_photo)
+                            <img src="{{ asset('uploads/' . $comment->user->url_photo) }}" alt="Foto Profil"
+                                class="img-fluid rounded-circle">
+                        @else
 
-            <div class="row mt-3 align-items-center">
-                <div class="col-md-1">
-                    <img src="{{ asset('assets/img/gallery/author-1.png') }}" alt="Foto Profil"
-                        class="img-fluid rounded-circle">
+                            <img src="{{ asset('uploads/profile-image/blank.png') }}" alt="Foto Profil"
+                                class="img-fluid rounded-circle">
+                        @endif
+                    </div>
+                    <div class="col-md-11">
+                        <p class="fs-1">{{ $comment->user->name }}</p>
+                    </div>
                 </div>
-                <div class="col-md-11">
-                    <p class="fs-1">Nana ML</p>
-                </div>
-            </div>
-            <p class="mt-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio nemo quae dolor
-                rerum voluptatem molestiae aut! Corporis recusandae veniam labore nam quas asperiores voluptate eligendi
-                quia reiciendis repudiandae, delectus a illo fuga accusantium dolores officia possimus vero at dolorem iusto
-                hic perspiciatis. Porro architecto dolores nesciunt libero, incidunt temporibus error.</p>
-            <hr class="mt-2">
+                <p class="mt-3">{{ $comment->comment }}</p>
+                <hr class="mt-2">
+            @endforeach
+
         </div>
         @livewireStyles
         <livewire:products-data>

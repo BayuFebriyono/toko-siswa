@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Photo;
 use App\Models\Product;
 use Illuminate\Support\Str;
@@ -63,9 +64,11 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $photos = Photo::where('product_id', $product->id)->get();
+        $comments = Comment::with(['product', 'user'])->where('product_id', $product->id)->get();
         return view('product.show', [
             'product' => $product,
-            'photos'  => $photos
+            'photos'  => $photos,
+            'comments' => $comments
         ]);
     }
 
