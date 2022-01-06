@@ -98,7 +98,7 @@
             $("#kota").change(function() {
                 let id_kota = $(this).val();
                 let kota_asal = '{{ $cart->product->market->city_id }}';
-                let berat = '{{ $cart->product->berat * $cart->qty }}';
+                let berat = '{{ ($cart->product->berat * $cart->qty) * 1000 }}';
                 $("#progress").show();
                 $.ajax({
                     url: "/check-ongkir",
@@ -115,13 +115,12 @@
                         );
 
                         if (response) {
-
                             $.each(response[0]['costs'], function(key, value) {
                                 $('#pengirim').append('<option value = "' + value.cost[
                                         0].value + '" data-name="' + response[
                                         0].code.toUpperCase() + value.service +
                                     '">' + response[
-                                        0].code.toUpperCase() + value.service +
+                                        0].code.toUpperCase()+" " + value.service +
                                     ' </option>')
                             });
                             $("#progress").hide();

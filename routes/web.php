@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Models\Cart;
 use App\Models\City;
 use App\Models\User;
@@ -8,21 +7,23 @@ use App\Models\Order;
 use App\Models\Market;
 use App\Models\Province;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 use App\Http\Controllers\MarketController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\MarketDashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MyTransactionController;
+use App\Http\Controllers\MarketDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -180,7 +181,31 @@ Route::get('/test', function () {
 });
 
 Route::get('/test2', function () {
-    return view('myprofile.transaction.cek-resi');
+    $cost = RajaOngkir::ongkosKirim([
+        'origin'        => 1, // ID kota/kabupaten asal
+        'destination'   => 10, // ID kota/kabupaten tujuan
+        'weight'        => 1000, // berat barang dalam gram
+        'courier'       => 'jne' // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
+    ])->get();
+    // dd(response()->json($cost));
+    return response()->json($cost);
+});
+
+Route::get('/test3', function(){
+    $response = Http::withHeaders([
+        'content-type' => 'application/x-www-form-urlencoded',
+        'key'=> env('RAJAONGKIR_API_KEY')
+    ])->asForm()->post('https://api.rajaongkir.com/starter/cost', [
+        'origin' => 1, 
+        'destination' => 114, 
+        'weight' => 1700, 
+        'courier' => 'jne',
+      ]);
+      
+
+    $response = $response->json();
+    $response = $response['rajaongkir']['results'];
+    return $response;
 });
 
 
@@ -198,12 +223,19 @@ Route::post('/getKota', function (Request $request) {
 });
 
 Route::post('/check-ongkir', function (Request $request) {
-    $cost = RajaOngkir::ongkosKirim([
-        'origin'        => $request->city_origin, // ID kota/kabupaten asal
-        'destination'   => $request->city_destination, // ID kota/kabupaten tujuan
-        'weight'        => $request->weight, // berat barang dalam gram
-        'courier'       => 'jne' // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
-    ])->get();
-    // dd(response()->json($cost));
-    return response()->json($cost);
+
+    $response = Http::withHeaders([
+        'content-type' => 'application/x-www-form-urlencoded',
+        'key'=> env('RAJAONGKIR_API_KEY')
+    ])->asForm()->post('https://api.rajaongkir.com/starter/cost', [
+        'origin' => $request->city_origin, 
+        'destination' => $request->city_destination, 
+        'weight' => $request->weight, 
+        'courier' => 'jne',
+      ]);
+      
+
+    $response = $response->json();
+    $response = $response['rajaongkir']['results'];
+    return $response;
 });
