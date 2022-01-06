@@ -175,7 +175,7 @@
                                     </div>
                                     <div class="card-body">
                                         <p>Toko : {{ $product->market->name }}</p>
-                                        <p class="card-text fs-md-2">{{ $product->name }}</p>
+                                        <p class="card-text fs-md-2">{{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}</p>
                                         <p class="card-text fs-md-1">Rp.{{ $product->price }}</p>
                                     </div>
                                 </div>

@@ -28,7 +28,7 @@ class CategoryController extends Controller
         $category = Category::where('id', $category_id)->first();
         if ($request->search) {
 
-            $products = Product::where('name', 'like',  "\\" . $request->search . "%")->get()->sortBy($table);
+            $products = Product::where('name', 'like', "'%" . $request->name . "%'")->get()->sortBy($table);
             return view('product.all_product', [
                 'products' => $products,
                 'category' => $category,
