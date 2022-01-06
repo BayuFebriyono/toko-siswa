@@ -53,7 +53,7 @@ class MarketController extends Controller
     public function editImage(Request $request)
     {
         $validatedData = $request->validate([
-            'url_photo' => 'mimes:png,jpg,jpeg|max:1024'
+            'url_photo' => 'mimes:png,jpg,jpeg|max:10240'
         ]);
 
 
@@ -76,7 +76,7 @@ class MarketController extends Controller
     public function editAccountPhoto(Request $request)
     {
         $validatedData = $request->validate([
-            'url_photo' => 'required|mimes:png,jpg,jpeg|max:1024'
+            'url_photo' => 'required|mimes:png,jpg,jpeg|max:10240'
         ]);
 
         $validatedData['url_photo'] = Storage::disk('public_uploads')->put('profile-image', $request->file('url_photo'));

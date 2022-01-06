@@ -1,10 +1,9 @@
-
 <section>
     <style>
         .checked {
             color: orange;
         }
-    
+
     </style>
     <div class="row h-100 d-flex justify-content-center">
         <h4 class="fs-3">Produk Terbaru</h4>
@@ -37,7 +36,8 @@
                                             class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 3 || round($product->comment->sum('star') / $product->comment->count()) == 4 || round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
                                         <span
                                             class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 4 || round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
-                                        <span class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
+                                        <span
+                                            class="fa fa-star {{ round($product->comment->sum('star') / $product->comment->count()) == 5 ? 'checked' : '' }}"></span>
                                     </div>
                                 @else
                                     <p class="text-muted">Belum Ada Rating</p>
