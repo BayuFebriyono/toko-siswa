@@ -18,7 +18,7 @@
     {{-- Bagian Kontent --}}
     @if ($summary)
         <div class="row align-items-center mt-4">
-            <h3>Paket No 020120026354621</h3>
+            <h3>Paket No {{ $summary->awb }}</h3>
             <p>Status : {{ $summary->status }}</p>
         </div>
         <a href="/mytransaction/terima/{{ $order->id }}" class="btn btn-success">Pesanan Diterima</a>

@@ -60,7 +60,7 @@
                     @elseif ($order->status == 'SENDING')
                         <p class="fs-md-1 mt-0">Pesanan Dalam Proses</p>
                         <p class="fs-md-1 mt-0">No Resi : {{ $order->no_resi }}</p>
-                        <a href="/mytransaction/cekResi/{{ $order->no_resi }}/{{ $order->id }}"
+                        <a href="/mytransaction/cekResi/{{ $order->no_resi }}/{{ $order->ekspedisi }}/{{ $order->id }}"
                             class="btn btn-success">Lacak Paket</a>
                     @endif
                 </div>

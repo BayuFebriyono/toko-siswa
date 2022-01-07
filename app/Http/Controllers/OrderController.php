@@ -42,10 +42,10 @@ class OrderController extends Controller
     {
         // dd($request->kurir_name);
 
-       $product = Product::where('id',$request->product_id)->first();
-       Product::where('id',$request->product_id)->update([
-           'stock' => $product->stock - $request->qty
-       ]);
+        $product = Product::where('id', $request->product_id)->first();
+        Product::where('id', $request->product_id)->update([
+            'stock' => $product->stock - $request->qty
+        ]);
 
         $data = [
             'user_id' => auth()->user()->id,
@@ -54,6 +54,7 @@ class OrderController extends Controller
             'nomor_hp' => $request->nomor_hp,
             'alamat' => $request->alamat,
             'kurir_name' => $request->kurir_name,
+            'ekspedisi' => $request->jasa,
             'total' => ($request->total + mt_rand(000, 999)),
             'qty' => $request->qty,
             'kode' => 'TRAN-' . mt_rand(00000000, 99999999)

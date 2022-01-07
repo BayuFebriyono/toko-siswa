@@ -59,15 +59,32 @@
                             </select>
                         </div>
                         <h5 class="mt-4">Pilih Pengiriman</h5>
-                        <div class="col-md-6">
-                            <div class="progress" id="progress" style="display: none;">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="jasa">Jasa Pengiriman</label>
+                                    <select name="jasa" id="jasa" class="form-select" required>
+                                        <option value="" selected disabled>--- Pilih Pengirim ---</option>
+                                        <option value="jne">JNE</option>
+                                        <option value="pos">Kantor Pos</option>
+                                        <option value="tiki">Tiki</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="pengirim">Layanan Pengiriman</label>
+                                    <select name="pengirim" id="pengirim" class="form-select" required>
+                                        <option value="" selected disabled>--- Pilih Pengirim ---</option>
+                                    </select>
+                                    <div class="progress my-3" id="progress" style="display: none;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                            role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                            style="width: 100%"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <label for="pengirim">Jasa Pengiriman</label>
-                            <select name="pengirim" id="pengirim" class="form-select" required>
-                                <option value="" selected disabled>--- Pilih Pengirim ---</option>
-                            </select>
+
                         </div>
 
                         <hr>
@@ -95,10 +112,11 @@
         $(document).ready(function() {
             //saat pilihan provinsi di pilih, maka akan mengambil data kota
             //di data-wilayah.php menggunakan ajax
-            $("#kota").change(function() {
-                let id_kota = $(this).val();
+            $("#jasa").change(function() {
+                let jasa = $(this).val();
+                let id_kota = $('#kota').val();
                 let kota_asal = '{{ $cart->product->market->city_id }}';
-                let berat = '{{ ($cart->product->berat * $cart->qty) * 1000 }}';
+                let berat = '{{ $cart->product->berat * $cart->qty * 1000 }}';
                 $("#progress").show();
                 $.ajax({
                     url: "/check-ongkir",
@@ -106,6 +124,7 @@
                         city_origin: kota_asal,
                         city_destination: id_kota,
                         weight: berat,
+                        kurir: jasa
                     },
                     dataType: "JSON",
                     type: "POST",
@@ -120,11 +139,16 @@
                                         0].value + '" data-name="' + response[
                                         0].code.toUpperCase() + value.service +
                                     '">' + response[
-                                        0].code.toUpperCase()+" " + value.service +
+                                        0].code.toUpperCase() + " " + value
+                                    .service +
                                     ' </option>')
                             });
                             $("#progress").hide();
                         }
+                    },
+                    error: function(request, status, errorThrown) {
+                        $("#progress").hide();
+                        alert("Terjadi Masalah Silahkan Coba Lagi")
                     }
                 });
             });

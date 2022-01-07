@@ -102,7 +102,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mytransaction/finish', [MyTransactionController::class, 'finish']);
     Route::get('/mytransaction/gagal', [MyTransactionController::class, 'gagal']);
     Route::get('/mytransaction/terima/{order}', [MyTransactionController::class, 'updateTerima']);
-    Route::get('/mytransaction/cekResi/{resi}/{order}', [MyTransactionController::class, 'cekResi']);
+    Route::get('/mytransaction/cekResi/{resi}/{ekspedisi}/{order}', [MyTransactionController::class, 'cekResi']);
     Route::get('/mytransaction/pay/{order}', [MyTransactionController::class, 'bayar']);
     Route::get('/transaction/pay/{order}', [MyTransactionController::class, 'updateBayar']);
 
@@ -203,7 +203,7 @@ Route::post('/check-ongkir', function (Request $request) {
         'origin' => $request->city_origin,
         'destination' => $request->city_destination,
         'weight' => $request->weight,
-        'courier' => 'jne',
+        'courier' => $request->kurir,
     ]);
 
 

@@ -25,6 +25,7 @@ class Order extends Migration
             $table->string('kode');
             $table->string('status')->default('PENDING');
             $table->string('no_resi')->nullable();
+            $table->string('ekspedisi');
             $table->string('kurir_name');
             $table->string('url_photo')->nullable();
             $table->timestamps();

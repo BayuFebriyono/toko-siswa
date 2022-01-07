@@ -75,11 +75,11 @@ class MyTransactionController extends Controller
 
     // Cek Resi
 
-    public function cekResi($resi, Order $order)
+    public function cekResi($resi, $ekspedisi, Order $order)
     {
         $api_key = env('BINDERBYTE_API_KEY');
         $curl = curl_init();
-        $url = 'https://api.binderbyte.com/v1/track?api_key=' . $api_key . '&courier=jne&awb=' . $resi;
+        $url = 'https://api.binderbyte.com/v1/track?api_key=' . $api_key . '&courier=' . $ekspedisi . '&awb=' . $resi;
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
