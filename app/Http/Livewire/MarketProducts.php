@@ -10,7 +10,12 @@ class MarketProducts extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
+    public $search;
 
+    protected $queryString = ['search'=> ['except' => '']];
+   
+    
+    
     public function render()
     {
 
@@ -21,6 +26,10 @@ class MarketProducts extends Component
 
         $market = auth()->user()->market;
         $produk = Product::where('market_id', $market->id)->latest()->paginate(5);
+        if ($this->search !== null) {
+            $produk = Product::where('name','like', '%' . $this->search . '%')->where('market_id', $market->id)
+            ->latest()->paginate(5);
+        }
         return view('livewire.market-products', [
             'market' => $market,
             'products' => $produk,
