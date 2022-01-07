@@ -100,7 +100,7 @@ class MarketController extends Controller
         $produk = Product::where('market_id', $market->id)->latest()->get();
         return view('myprofile.market', [
             'market' => $market,
-            'products' => $produk,
+            // 'products' => $produk,
             'categories' => Category::all()->sortBy('name')
         ]);
     }

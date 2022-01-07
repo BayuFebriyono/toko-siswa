@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    
     @include('home_partials.navbar')
     <!-- Modal -->
     <div class="modal fade " id="marketModal" tabindex="-1">
@@ -157,32 +158,10 @@
                 <div class="col-lg-7 mx-auto text-center mb-6">
                     <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">More Products</h5>
                 </div>
+                @livewireStyles
 
-                <div class="row  d-flex justify-content-center">
-
-                    @foreach ($products as $product)
-                        <div class=" col-6 col-sm-6 col-md-4 my-3">
-                            <a href="/product/{{ $product->slug }}/edit ">
-                                <div class="card">
-                                    <div class="tex-center">
-                                        @if ($product->photo->count())
-                                            <img src="{{ asset('uploads/' . $product->photo[0]->url) }}"
-                                                class="card-img-top img-fluid" alt="...">
-                                        @else
-                                            <img src="{{ asset('uploads/product-image/no-pictures.png') }}"
-                                                class="card-img-top img-fluid" alt="...">
-                                        @endif
-                                    </div>
-                                    <div class="card-body">
-                                        <p>Toko : {{ $product->market->name }}</p>
-                                        <p class="card-text fs-md-2">{{ \Illuminate\Support\Str::limit($product->name, 10, $end = '...') }}</p>
-                                        <p class="card-text fs-md-1">Rp.{{ $product->price }}</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
+              {{-- Posisi Live  --}}
+              <livewire:market-products>
             </div>
         </div>
 
@@ -213,6 +192,7 @@
             }
         }
     </script>
+    @livewireScripts
 
 </body>
 
