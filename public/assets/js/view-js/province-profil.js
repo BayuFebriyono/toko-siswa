@@ -3,6 +3,7 @@ $(document).ready(function () {
     //di data-wilayah.php menggunakan ajax
     $("#provinsi").change(function () {
         var id_provinces = $(this).val();
+        console.log(id_provinces);
         $.ajax({
             type: "POST",
             url: "/getKota",

@@ -6,6 +6,7 @@ use App\Models\City;
 // useuse Kavist\RajaOngkir\Facades\RajaOngkir;
 use App\Models\Province;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Http;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
 
@@ -18,13 +19,24 @@ class LocationSeeder extends Seeder
      */
     public function run()
     {
-        $daftarProvinsi = RajaOngkir::provinsi()->all();
+        $daftarProvinsi = Http::withHeaders([
+            'key' => env('RAJAONGKIR_API_KEY')
+        ])->get('https://api.rajaongkir.com/starter/province');
+        $daftarProvinsi = $daftarProvinsi->json();
+        $daftarProvinsi = $daftarProvinsi['rajaongkir']['results'];
+
         foreach ($daftarProvinsi as $provinceRow) {
             Province::create([
                 'province_id' => $provinceRow['province_id'],
                 'name'        => $provinceRow['province'],
             ]);
-            $daftarKota = RajaOngkir::kota()->dariProvinsi($provinceRow['province_id'])->get();
+            $daftarKota = Http::withHeaders([
+                'key' => env('RAJAONGKIR_API_KEY')
+            ])->get('https://api.rajaongkir.com/starter/city', [
+                'province' => $provinceRow['province_id']
+            ]);
+            $daftarKota = $daftarKota->json();
+            $daftarKota = $daftarKota['rajaongkir']['results'];
             foreach ($daftarKota as $cityRow) {
                 City::create([
                     'province_id'   => $provinceRow['province_id'],

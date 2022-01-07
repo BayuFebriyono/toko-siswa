@@ -198,14 +198,14 @@ Route::post('/check-ongkir', function (Request $request) {
 
     $response = Http::withHeaders([
         'content-type' => 'application/x-www-form-urlencoded',
-        'key'=> env('RAJAONGKIR_API_KEY')
+        'key' => env('RAJAONGKIR_API_KEY')
     ])->asForm()->post('https://api.rajaongkir.com/starter/cost', [
-        'origin' => $request->city_origin, 
-        'destination' => $request->city_destination, 
-        'weight' => $request->weight, 
+        'origin' => $request->city_origin,
+        'destination' => $request->city_destination,
+        'weight' => $request->weight,
         'courier' => 'jne',
-      ]);
-      
+    ]);
+
 
     $response = $response->json();
     $response = $response['rajaongkir']['results'];
