@@ -35,6 +35,12 @@
                         <span>Transaksi Berhasil</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ Request::is('identitas*') ? 'active' : '' }} ">
+                    <a href="/identitas" class='sidebar-link'>
+                        <i data-feather="check-circle" class="text-dark"></i>
+                        <span>Identitas</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-item ">
                     <a href="/" class='sidebar-link'>

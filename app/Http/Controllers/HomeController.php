@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Identitas;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class HomeController extends Controller
     {
         return view('home_partials.main', [
             'categories' => Category::all(),
-            'allProducts' => Product::latest()->get()
+            'allProducts' => Product::latest()->get(),
+            'identitas' => Identitas::first()
         ]);
     }
 

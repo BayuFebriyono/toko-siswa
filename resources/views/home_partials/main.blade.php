@@ -66,10 +66,10 @@
                         </div>
                     </div>
                 </div> --}}
-                <img src="{{ asset('assets/img/gallery/main-banner.png') }}" alt=""
-                    class="img-fluid d-none d-md-inline">
-                <img src="{{ asset('assets/img/gallery/banner-hp-02.png') }}" alt=""
-                    class="img-fluid d-inline d-md-none">
+                <img src="{{ asset('uploads/' . $identitas->foto) }}" alt=""
+                    class="img-fluid">
+                {{-- <img src="{{ asset('assets/img/gallery/banner-hp-02.png') }}" alt=""
+                    class="img-fluid d-inline d-md-none"> --}}
 
                 {{-- Kategori --}}
                 <h1 class=" mb-3 fs-3 mt-5 mb-4">Kategori</h1>

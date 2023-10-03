@@ -129,6 +129,9 @@ Route::middleware('auth')->group(function () {
 
         // Transaksi Sukses
         Route::get('/admin-sukses', [AdminController::class, 'success']);
+
+        Route::get('/identitas', [AdminController::class,'identitas']);
+        Route::post('/identitas', [AdminController::class,'ubahIdentitas']);
     });
 });
 
